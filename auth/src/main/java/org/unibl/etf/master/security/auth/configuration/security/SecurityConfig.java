@@ -19,7 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.authorizeRequests()
                 .antMatchers("/h2-console/**").permitAll()
                 .anyRequest().authenticated()
-                .and().formLogin().loginPage("/login").permitAll()
+                .and().formLogin().loginPage("/login").defaultSuccessUrl("/").permitAll()
                 .and().logout().permitAll();
 
         /* h2 console is opened so you could add manually:

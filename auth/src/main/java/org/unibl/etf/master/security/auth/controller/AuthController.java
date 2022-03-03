@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 import org.unibl.etf.master.security.auth.exception.UnauthorizedException;
 import org.unibl.etf.master.security.auth.model.response.BaseResponse;
 import org.unibl.etf.master.security.auth.service.AuthenticationService;
@@ -25,5 +26,10 @@ public class AuthController {
                 .getUserDetails(SecurityContextHolder.getContext()
                         .getAuthentication()
                         .getPrincipal()));
+    }
+
+    @GetMapping(value = "/login")
+    public ModelAndView login() {
+        return new ModelAndView("login");
     }
 }
